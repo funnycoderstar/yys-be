@@ -21,6 +21,15 @@ module.exports = {
             "error",
             "always"
         ],
-        "no-console": 0
+        "no-console": 0,
+        "key-spacing": [
+            "error"
+        ],
+        "no-trailing-spaces": [
+            "error"
+        ],
+        "space-infix-ops": [
+            "error"
+        ],
     }
 };
