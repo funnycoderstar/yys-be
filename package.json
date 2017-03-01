@@ -1,0 +1,34 @@
+{
+  "name": "yys-be",
+  "version": "1.0.0",
+  "description": "阴阳师小助手",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funnycoderstar/yys-be.git"
+  },
+  "keywords": [
+    "vue",
+    "koa"
+  ],
+  "author": "funnycoderstar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funnycoderstar/yys-be/issues"
+  },
+  "homepage": "https://github.com/funnycoderstar/yys-be#readme",
+  "dependencies": {
+    "crawler": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "pre-commit": "^1.2.2"
+  }
+}
