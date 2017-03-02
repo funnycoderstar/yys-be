@@ -1,36 +1,5 @@
 const Crawler = require('crawler');
 
-const c = new Crawler({
-    maxConnections: 10,
-    callback: function (error, res, done) {
-        if (error) {
-            console.log(error);
-        } else {
-            const $ = res.$;
-
-            const $tables = $('table');
-            const tablesContent = [];
-            for (let i = 0; i < $tables.length; i++) {
-                const tableText = $($tables[i]).text();
-                tablesContent.push(tableText.split('\n').filter(text => text));
-            }
-
-            const heroInfo = getHeroAttribute(tablesContent[0]);
-            heroInfo.awaken = getHeroAwaken(tablesContent[1]),
-            heroInfo.skills = [
-                getHeroSkil(tablesContent[2]),
-                getHeroSkil(tablesContent[3]),
-                getHeroSkil(tablesContent[3]),
-            ];
-            console.log(heroInfo);
-        }
-        done();
-    }
-});
-
-c.queue('http://www.18183.com/yys/201701/784802.html');
-
-
 function getHeroAttribute(texts) {
     return {
         name: texts[1],
@@ -82,3 +51,37 @@ function getHeroSkil(texts) {
         ].filter(up => up),
     };
 }
+
+module.exports = function(url) {
+    return new Promise((resolve, reject) => {
+        const c = new Crawler({
+            maxConnections: 10,
+            callback: function (error, res, done) {
+                if (error) {
+                    reject(error);
+                    return;
+                } else {
+                    const $ = res.$;
+
+                    const $tables = $('table');
+                    const tablesContent = [];
+                    for (let i = 0; i < $tables.length; i++) {
+                        const tableText = $($tables[i]).text();
+                        tablesContent.push(tableText.split('\n').filter(text => text));
+                    }
+
+                    const heroInfo = getHeroAttribute(tablesContent[0]);
+                    heroInfo.awaken = getHeroAwaken(tablesContent[1]),
+                    heroInfo.skills = [
+                        getHeroSkil(tablesContent[2]),
+                        getHeroSkil(tablesContent[3]),
+                        getHeroSkil(tablesContent[3]),
+                    ];
+                    resolve(heroInfo);
+                }
+                done();
+            }
+        });
+        c.queue(url);
+    });
+};
