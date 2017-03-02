@@ -7,16 +7,22 @@ const c = new Crawler({
             console.log(error);
         } else {
             const $ = res.$;
+
             const $tables = $('table');
             const tablesContent = [];
             for (let i = 0; i < $tables.length; i++) {
                 const tableText = $($tables[i]).text();
                 tablesContent.push(tableText.split('\n').filter(text => text));
             }
-            console.log(getHeroAttribute(tablesContent[0]));
-            console.log(getHeroAwaken(tablesContent[1]));
-            console.log(getHeroSkil(tablesContent[2]));
 
+            const heroInfo = getHeroAttribute(tablesContent[0]);
+            heroInfo.awaken = getHeroAwaken(tablesContent[1]),
+            heroInfo.skills = [
+                getHeroSkil(tablesContent[2]),
+                getHeroSkil(tablesContent[3]),
+                getHeroSkil(tablesContent[3]),
+            ];
+            console.log(heroInfo);
         }
         done();
     }
@@ -57,24 +63,22 @@ function getMaterial(material) {
     let data = {};
     for (let i = 0; i < 4; i++) {
         data.name = material[i + 16],
-        data.count = material[i + 20],
-        materialList.push(data);
+            data.count = material[i + 20],
+            materialList.push(data);
         data = {};
     }
     return materialList;
 }
 function getHeroSkil(texts) {
     return {
-        skil: {
-            name: texts[0],
-            Consumption: texts[2],
-            effect: texts[4],
-            upgrade: [
-                texts[6],
-                texts[7],
-                texts[8],
-                texts[9],
-            ],
-        }
+        name: texts[0],
+        Consumption: parseInt(texts[2]),
+        effect: texts[4],
+        upgrade: [
+            texts[6],
+            texts[7],
+            texts[8],
+            texts[9],
+        ].filter(up => up),
     };
 }
