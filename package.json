@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/funnycoderstar/yys-be#readme",
   "dependencies": {
-    "crawler": "^1.0.3"
+    "crawler": "^1.0.3",
+    "mongoose": "^4.8.5"
   },
   "devDependencies": {
     "eslint": "^3.16.1",

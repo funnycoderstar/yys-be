@@ -75,7 +75,7 @@ module.exports = function(url) {
                     heroInfo.skills = [
                         getHeroSkil(tablesContent[2]),
                         getHeroSkil(tablesContent[3]),
-                        getHeroSkil(tablesContent[3]),
+                        getHeroSkil(tablesContent[4]),
                     ];
                     resolve(heroInfo);
                 }
