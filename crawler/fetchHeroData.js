@@ -1,6 +1,10 @@
 const Crawler = require('crawler');
 
 function getHeroAttribute(texts) {
+    if (!texts) {
+        // console.log(texts);
+        return;
+    }
     return {
         name: texts[1],
         cv: texts[3],
@@ -11,6 +15,10 @@ function getHeroAttribute(texts) {
     };
 }
 function getHeroAwaken(texts) {
+    if (!texts) {
+        // console.log(texts);
+        return;
+    }
     return {
         attack: getSkillUp(texts[5]),
         life: getSkillUp(texts[6]),
@@ -39,6 +47,10 @@ function getMaterial(material) {
     return materialList;
 }
 function getHeroSkil(texts) {
+    if (!texts) {
+        // console.log(texts);
+        return;
+    }
     return {
         name: texts[0],
         Consumption: parseInt(texts[2]),
@@ -52,7 +64,7 @@ function getHeroSkil(texts) {
     };
 }
 
-module.exports = function(url) {
+module.exports = function (url) {
     return new Promise((resolve, reject) => {
         const c = new Crawler({
             maxConnections: 10,
@@ -71,12 +83,16 @@ module.exports = function(url) {
                     }
 
                     const heroInfo = getHeroAttribute(tablesContent[0]);
-                    heroInfo.awaken = getHeroAwaken(tablesContent[1]),
+                    heroInfo.awaken = getHeroAwaken(tablesContent[1]);
+
                     heroInfo.skills = [
                         getHeroSkil(tablesContent[2]),
                         getHeroSkil(tablesContent[3]),
                         getHeroSkil(tablesContent[4]),
                     ];
+                    if (!heroInfo.awaken) {
+                        // console.log(heroInfo.name);
+                    }
                     resolve(heroInfo);
                 }
                 done();

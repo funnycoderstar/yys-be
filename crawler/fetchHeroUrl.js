@@ -1,5 +1,5 @@
 const Crawler = require('crawler');
-module.export = function () {
+module.exports = function () {
     return new Promise((resolve, reject) => {
         const c = new Crawler({
             maxConnections: 10,
@@ -9,11 +9,15 @@ module.export = function () {
                     return;
                 } else {
                     const $ = res.$;
-                    const $tables = $('table a');
+                    const $tables = $('tbody #pic').parent('a');
                     const tablesContent = [];
                     for (let i = 0; i < $tables.length; i++) {
                         const tableText = $tables[i].attribs.href;
-                        tablesContent.push(tableText.split('\n').filter(text => text));
+                        tablesContent.push(tableText.split('\n').filter(text => {
+                            if(/http:\/\/www.18183.com\/yys\/20/.test(text)){
+                                return text;
+                            }
+                        }));
                     }
                     resolve(tablesContent);
                 }
