@@ -82,17 +82,15 @@ module.exports = function (url) {
                         tablesContent.push(tableText.split('\n').filter(text => text));
                     }
 
+
                     const heroInfo = getHeroAttribute(tablesContent[0]);
                     heroInfo.awaken = getHeroAwaken(tablesContent[1]);
-
+                    heroInfo.heroImg = $('table img')[0].attribs.src;
                     heroInfo.skills = [
                         getHeroSkil(tablesContent[2]),
                         getHeroSkil(tablesContent[3]),
                         getHeroSkil(tablesContent[4]),
                     ];
-                    if (!heroInfo.awaken) {
-                        // console.log(heroInfo.name);
-                    }
                     resolve(heroInfo);
                 }
                 done();
