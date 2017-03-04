@@ -4,6 +4,7 @@
   "description": "阴阳师小助手",
   "main": "index.js",
   "scripts": {
+    "start": "node src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ."
   },
@@ -26,6 +27,10 @@
   "homepage": "https://github.com/funnycoderstar/yys-be#readme",
   "dependencies": {
     "crawler": "^1.0.3",
+    "koa": "^2.0.1",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^2.0.1",
+    "koa-router": "^5.4.0",
     "mongoose": "^4.8.5"
   },
   "devDependencies": {
