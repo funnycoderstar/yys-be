@@ -26,7 +26,7 @@ function getHeroAwaken(texts) {
         speed: getSkillUp(texts[8]),
         crit: getSkillUp(texts[9]),
         material: getMaterial(texts),
-        skil: texts[texts.length - 1],
+        skill: texts[texts.length - 1],
     };
 }
 function getSkillUp(skill) {
