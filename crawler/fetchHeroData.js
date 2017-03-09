@@ -2,7 +2,6 @@ const Crawler = require('crawler');
 
 function getHeroAttribute(texts) {
     if (!texts) {
-        // console.log(texts);
         return;
     }
     return {
@@ -16,7 +15,6 @@ function getHeroAttribute(texts) {
 }
 function getHeroAwaken(texts) {
     if (!texts) {
-        // console.log(texts);
         return;
     }
     return {
@@ -48,7 +46,6 @@ function getMaterial(material) {
 }
 function getHeroSkil(texts) {
     if (!texts) {
-        // console.log(texts);
         return;
     }
     return {

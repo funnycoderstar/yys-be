@@ -8,7 +8,7 @@ router
         ctx.status = 200;
     })
     .get('/hero/:name', async (ctx) => {
-        const heroResult = await Hero.findOne({ name: ctx.params.name });
+        const heroResult = await Hero.find({ name: new RegExp(ctx.params.name, 'g') });
         if (heroResult) {
             ctx.body = heroResult;
         } else {
