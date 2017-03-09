@@ -4,7 +4,7 @@ const Hero = require('../models/hero');
 
 router
     .get('/heros', async (ctx) => {
-        ctx.body = await Hero.find();
+        ctx.body = await Hero.find().sort({'rarity': -1});
         ctx.status = 200;
     })
     .get('/hero/:name', async (ctx) => {
