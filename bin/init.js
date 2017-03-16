@@ -10,6 +10,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/test', (err) => {
 const updateHerosData = require('../src/tasks/updateHerosData');
 updateHerosData()
 .then(() => {
-    console.log('update end');
+    console.log('数据更新完成');
     process.exit(0);
 });
