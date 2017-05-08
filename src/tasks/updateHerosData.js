@@ -3,22 +3,22 @@ const fetchHeroUrl = require('../../crawler/fetchHeroUrl');
 const Hero = require('../models/hero');
 const imageDownloader = require('../utils/imageDownloader');
 const path = require('path');
-const fs = require('fs');
+// const fs = require('fs');
 
 module.exports = async function () {
     const herosUrl = await fetchHeroUrl();
     for (const url of herosUrl) {
         const heroData = await fetchHeroData(url);
 
-        const stat = fs.statSync(path.join(__dirname, 'public'));
-        if (!stat.isDirectory()) {
-            const publicPath = path.resolve(__dirname, '../../public');
-            fs.mkdir(publicPath, function (err) {
-                if (err) {
-                    console.error(err);
-                }
-            });
-        }
+        // const stat = fs.statSync(path.join(__dirname, 'public'));
+        // if (!stat.isDirectory()) {
+        //     const publicPath = path.resolve(__dirname, '../../public');
+        //     fs.mkdir(publicPath, function (err) {
+        //         if (err) {
+        //             console.error(err);
+        //         }
+        //     });
+        // }
 
         await imageDownloader(
             /^http/.test(heroData.heroImg) ? heroData.heroImg : 'http:' + heroData.heroImg,

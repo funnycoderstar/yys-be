@@ -3,10 +3,12 @@ const logger = require('koa-logger');
 const json = require('koa-json');
 const hero = require('./routers/hero');
 const serve  = require('koa-static');
+const cors = require('koa-cors');
 const path = require('path');
 
 const app = new koa();
 app.use(logger());
+app.use(cors());
 app.use(json());
 app.use(serve(path.resolve(__dirname, '../public/')));
 

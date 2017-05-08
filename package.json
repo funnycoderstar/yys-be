@@ -29,6 +29,7 @@
   "dependencies": {
     "crawler": "^1.0.3",
     "koa": "^2.0.1",
+    "koa-cors": "0.0.16",
     "koa-json": "^2.0.2",
     "koa-logger": "^2.0.1",
     "koa-router": "^7.1.0",

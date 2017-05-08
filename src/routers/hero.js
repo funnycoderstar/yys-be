@@ -1,10 +1,10 @@
 const Router = require('koa-router');
+require('koa-cors');
 const router = new Router();
 const Hero = require('../models/hero');
-
 router
     .get('/heros', async (ctx) => {
-        ctx.body = await Hero.find().sort({'rarity': -1});
+        ctx.body = await Hero.find().sort({ 'rarity': -1 });
         ctx.status = 200;
     })
     .get('/hero/:name', async (ctx) => {
