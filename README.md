@@ -1,9 +1,34 @@
 # yys-be
 阴阳师小助手后端
+
 ## 技术栈
 nodejs + crawler + koa2 + mongoose
-## 免责声明
-阴阳师小助手所有数据均来自于[18183](http://www.18183.com/yys/)。
+
+## Build Setup
+
+``` bash
+# 安装项目所需要的依赖
+npm install
+
+# 启动服务器
+npm start
+
+# 更新所有数据
+npm run init
+
+```
+# (注：该项目数据库用的是mongoose, 需要安装mongodb及mongodb客户端)
+
+```bash
+
+# 安装
+npm install mongodb
+
+# 启动
+mongod
+
+```
+
 ##　目录结构
 
 ```
@@ -29,3 +54,6 @@ nodejs + crawler + koa2 + mongoose
 |-- README.md                       //关于启动项目的命令和含义
 
 ```
+
+## 免责声明
+阴阳师小助手所有数据均来自于[18183](http://www.18183.com/yys/)。
