@@ -9,6 +9,7 @@ module.exports = async function () {
     const herosUrl = await fetchHeroUrl();
     for (const url of herosUrl) {
         const heroData = await fetchHeroData(url);
+        console.log(heroData);
 
         // const stat = fs.statSync(path.join(__dirname, 'public'));
         // if (!stat.isDirectory()) {
@@ -33,6 +34,9 @@ module.exports = async function () {
             brushMapExponent: heroData.brushMapExponent,
             awaken: heroData.awaken,
             skills: heroData.skills,
+            heroMatchInfo: heroData.heroMatchInfo,
+            heroYuxun: heroData.heroYuxun,
+            heroRemark: heroData.heroRemark,
         };
         const conditions = { name: heroData.name };
         const findResult = await Hero.findOne(conditions);

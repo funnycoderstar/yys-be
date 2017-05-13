@@ -60,7 +60,33 @@ function getHeroSkil(texts) {
         ].filter(up => up),
     };
 }
-
+function getHeroMatch(texts, text2) {
+    if (!texts) {
+        return;
+    }
+    return {
+        heroMatchImg: text2,
+        matchInfo: texts[0],
+        matchRemark: texts[1],
+    };
+}
+function getHeroYuxun(texts) {
+    if (!texts) {
+        return;
+    }
+    return {
+        matchInfo: texts[2],
+        matchRemark: texts[3],
+        two: texts[5],
+        four: texts[6],
+        six: texts[7],
+    };
+}
+function getHeroRemark(texts) {
+    return {
+        remark: texts[texts.length - 1]
+    };
+}
 module.exports = function (url) {
     return new Promise((resolve, reject) => {
         const c = new Crawler({
@@ -80,6 +106,7 @@ module.exports = function (url) {
                     }
 
 
+
                     const heroInfo = getHeroAttribute(tablesContent[0]);
                     heroInfo.awaken = getHeroAwaken(tablesContent[1]);
                     heroInfo.heroImg = $('table img')[0].attribs.src;
@@ -88,6 +115,13 @@ module.exports = function (url) {
                         getHeroSkil(tablesContent[3]),
                         getHeroSkil(tablesContent[4]),
                     ];
+                    const $matchs = $('center');
+                    const HeroMatch = $($matchs).nextAll('p').text().split('\n').filter(text => text);
+                    const heroMatchImg = $('center img')[0].attribs.src;
+                    heroInfo.heroMatchInfo = getHeroMatch(HeroMatch, heroMatchImg);
+                    heroInfo.heroYuxun = getHeroYuxun(HeroMatch);
+                    heroInfo.heroRemark = getHeroRemark(HeroMatch);
+                    // console.log(heroInfo);
                     resolve(heroInfo);
                 }
                 done();

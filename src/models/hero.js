@@ -9,6 +9,9 @@ const heroSchema = new mongoose.Schema({
     brushMapExponent: { type: String },
     awaken: { type: Object },
     skills: { type: Array },
+    heroMatchInfo: { type: Object },
+    heroYuxun: { type: Object },
+    heroRemark: { type: Object },
 });
 
 module.exports = mongoose.model('heros', heroSchema);
