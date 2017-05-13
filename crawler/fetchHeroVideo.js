@@ -18,7 +18,7 @@ module.exports = function () {
                             tablesContent.push(tableText);
                         }
                     }
-                    console.log(tablesContent.length);
+                    // console.log(tablesContent.length);
                     // 攻略标题
                     const $title = $('.list-detail .tit');
                     const tablesTitle = [];
@@ -26,15 +26,15 @@ module.exports = function () {
                         const tableText = $($title[i]).text();
                         tablesTitle.push(tableText);
                     }
-                    console.log(tablesTitle.length);
+                    // console.log(tablesTitle.length);
                     // 攻略dec
                     const $dec = $('.list-detail .desc');
                     const tablesDec = [];
                     for (let i = 0; i < $dec.length; i++) {
                         const tableText = $($dec[i]).text();
-                        tablesDec.push(tableText.split('\n'));
+                        tablesDec.push(tableText.split('\n').filter(text => text));
                     }
-                    console.log(tablesDec);
+                    // console.log(tablesDec);
                     // 攻略图片
                     const $img = $('.ani-pic img');
                     const tablesImg = [];

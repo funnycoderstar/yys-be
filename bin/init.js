@@ -10,6 +10,18 @@ mongoose.connect('mongodb://127.0.0.1:27017/test', (err) => {
 const updateHerosData = require('../src/tasks/updateHerosData');
 updateHerosData()
 .then(() => {
-    console.log('数据更新完成');
+    console.log('式神数据更新完成');
+    process.exit(0);
+});
+const updateHeroStrategyData = require('../src/tasks/updateheroStrategyData');
+updateHeroStrategyData()
+.then(() => {
+    console.log('式神攻略数据更新完成');
+    process.exit(0);
+});
+const updateHeroVideoData = require('../src/tasks/updateHeroVideoData');
+updateHeroVideoData()
+.then(() => {
+    console.log('式神视频数据更新完成');
     process.exit(0);
 });
