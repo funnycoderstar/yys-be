@@ -10,14 +10,17 @@ module.exports = function () {
                 } else {
                     const $ = res.$;
                     // a链接的href
-                    const $tables = $('.clearfix');
+                    const $tables = $('.list-detail .clearfix');
                     const tablesContent = [];
                     for (let i = 0; i < $tables.length; i++) {
                         const tableText = $tables[i].attribs.href;
-                        tablesContent.push(tableText);
+                        if (tableText !== undefined && /http:\/\/www.18183.com\/yys\/20/.test(tableText) ) {
+                            tablesContent.push(tableText);
+                        }
                     }
+                    // console.log(tablesContent.length);
                     // 攻略标题
-                    const $title = $('.tit');
+                    const $title = $('.list-detail .tit');
                     const tablesTitle = [];
                     for (let i = 0; i < $title.length; i++) {
                         const tableText = $($title[i]).text();
@@ -25,11 +28,11 @@ module.exports = function () {
                     }
                     // console.log(tablesTitle.length);
                     // 攻略dec
-                    const $dec = $('.desc');
+                    const $dec = $('.list-detail .desc');
                     const tablesDec = [];
                     for (let i = 0; i < $dec.length; i++) {
                         const tableText = $($dec[i]).text();
-                        tablesDec.push(tableText);
+                        tablesDec.push(tableText.split('\n'));
                     }
                     // console.log(tablesDec.length);
                     // 攻略图片
@@ -39,6 +42,7 @@ module.exports = function () {
                         const tableText = $img[i].attribs['data-original'];
                         tablesImg.push(tableText);
                     }
+                    // console.log(tablesImg.length);
                     const gonglue = [];
                     for (let i = 0; i < $img.length; i++) {
                         gonglue.push(
@@ -50,7 +54,7 @@ module.exports = function () {
                             }
                         );
                     }
-                    console.log(gonglue);
+                    // console.log(gonglue);
                     resolve(gonglue);
                 }
                 done();

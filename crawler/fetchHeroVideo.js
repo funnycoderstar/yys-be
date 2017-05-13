@@ -10,29 +10,31 @@ module.exports = function () {
                 } else {
                     const $ = res.$;
                     // a链接的href
-                    const $tables = $('.clearfix');
+                    const $tables = $('.list-detail .clearfix');
                     const tablesContent = [];
                     for (let i = 0; i < $tables.length; i++) {
                         const tableText = $tables[i].attribs.href;
-                        tablesContent.push(tableText);
+                        if (tableText !== undefined && /http:\/\/www.18183.com\/yys\/20/.test(tableText) ) {
+                            tablesContent.push(tableText);
+                        }
                     }
-                    // console.log(tablesContent);
+                    console.log(tablesContent.length);
                     // 攻略标题
-                    const $title = $('.tit');
+                    const $title = $('.list-detail .tit');
                     const tablesTitle = [];
                     for (let i = 0; i < $title.length; i++) {
                         const tableText = $($title[i]).text();
                         tablesTitle.push(tableText);
                     }
-                    // console.log(tablesTitle.length);
+                    console.log(tablesTitle.length);
                     // 攻略dec
-                    const $dec = $('.desc');
+                    const $dec = $('.list-detail .desc');
                     const tablesDec = [];
                     for (let i = 0; i < $dec.length; i++) {
                         const tableText = $($dec[i]).text();
-                        tablesDec.push(tableText);
+                        tablesDec.push(tableText.split('\n'));
                     }
-                    // console.log(tablesDec.length);
+                    console.log(tablesDec);
                     // 攻略图片
                     const $img = $('.ani-pic img');
                     const tablesImg = [];
@@ -51,7 +53,7 @@ module.exports = function () {
                             }
                         );
                     }
-                    console.log(video);
+                    // console.log(video);
                     resolve(video);
                 }
                 done();
