@@ -34,5 +34,6 @@ module.exports = {
         "space-infix-ops": [
             "error"
         ],
+        "linebreak-style": 0,
     }
 };
