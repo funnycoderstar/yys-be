@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/funnycoderstar/yys-be#readme",
   "dependencies": {
+    "axios": "^0.16.1",
     "crawler": "^1.0.3",
     "es6-promisify": "^5.0.0",
     "koa": "^2.0.1",
